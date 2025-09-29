@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import Ajv from "ajv";
+import { Ajv } from "ajv";
 import { llmJson } from "../ai/llm.js";
 import { writeOut } from "../utils/io.js";
 
