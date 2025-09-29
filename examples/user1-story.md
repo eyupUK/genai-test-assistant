@@ -1,0 +1,1 @@
+Find feature files from the url <https://github.com/eyupUK/playwright-cucumber-ts-pom/tree/main/src/test/features/appSauceDemo> and create test cases in terms of industry best practices by playwright with cucumber and typescript.

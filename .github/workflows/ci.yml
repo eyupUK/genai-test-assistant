@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - name: Skip if no API key
+        if: ${{ !secrets.OPENAI_API_KEY }}
+        run: echo "No OPENAI_API_KEY in secrets; skipping demo run."
+      - name: Run demo
+        if: ${{ secrets.OPENAI_API_KEY }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          npm run gherkin || true
+          npm run data || true
+          npm run triage || true

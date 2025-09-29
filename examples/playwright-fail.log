@@ -1,0 +1,6 @@
+[Error] locator.resolve: Timeout 30000ms exceeded.
+  waiting for getByRole('button', { name: 'Checkout' })
+  at tests/checkout.spec.ts:42
+  Retry #2
+  Browser: chromium 1.48.1
+  CI: true

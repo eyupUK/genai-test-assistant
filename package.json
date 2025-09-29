@@ -1,0 +1,33 @@
+{
+  "name": "genai-test-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "GenAI helpers for QA: NL→Gherkin, JSON Schema→Test Data, Failure Triage",
+  "bin": {
+    "genai-test-assistant": "src/cli.ts"
+  },
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "gherkin": "tsx src/cli.ts gherkin --story examples/user1-story.md --out out/feature",
+    "data": "tsx src/cli.ts data --schema examples/product.schema.json --n 25 --out out/data.json",
+    "triage": "tsx src/cli.ts triage --log examples/playwright-fail.log --out out/triage.md",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "commander": "^12.1.0",
+    "dotenv": "^17.2.2",
+    "openai": "^4.58.1",
+    "yaml": "^2.6.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@types/node": "^20.14.12",
+    "playwright": "^1.48.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.6.3"
+  }
+}
