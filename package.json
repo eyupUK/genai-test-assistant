@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "tsx src/cli.ts",
-    "gherkin": "tsx src/cli.ts gherkin --story examples/user1-story.md --out out/feature",
+    "gherkin": "tsx src/cli.ts gherkin --story examples/user-story.md --out out/feature",
     "data": "tsx src/cli.ts data --schema examples/product.schema.json --n 25 --out out/data.json",
     "triage": "tsx src/cli.ts triage --log examples/playwright-fail.log --out out/triage.md",
     "build": "tsc -p tsconfig.json"

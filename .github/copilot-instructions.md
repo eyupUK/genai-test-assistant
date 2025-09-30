@@ -4,7 +4,7 @@
 
 This is a **TypeScript ES module** CLI tool that applies GenAI to QA workflows. Three core features:
 
-1. **NL → Gherkin**: Convert user stories to `.feature` files + Playwright step skeletons
+1. **NL → Gherkin + POM**: Convert user stories to `.feature` files + Playwright step definitions + Page Object Model classes
 2. **JSON Schema → Test Data**: Generate validated synthetic test data using AJV
 3. **Failure Triage**: Analyze test logs and output structured Markdown reports
 
@@ -26,7 +26,7 @@ const result = await llmJson(system, user, schema);
 ## CLI & Scripts
 
 Run via package.json scripts (preferred):
-- `npm run gherkin` - generates `out/feature/generated.feature` + `steps.generated.ts`
+- `npm run gherkin` - generates `out/feature/generated.feature` + `steps.generated.ts` + `pages.generated.ts`
 - `npm run data` - validates against schema, outputs to `out/data.json`
 - `npm run triage` - processes logs to `out/triage.md`
 
@@ -43,9 +43,17 @@ Run via package.json scripts (preferred):
 ## Prompt Engineering
 
 Prompts in `src/ai/prompts/` follow specific patterns:
-- **gherkin.md**: Structured QA guidance with tags (@smoke/@regression) and Playwright conventions
+- **gherkin.md**: Generates 3-part test suite (Feature + Steps + POM) with industry best practices
 - **testdata.md**: Constraint-aware data generation with boundary cases
 - **triage.md**: Failure analysis with root cause grouping
+
+## Page Object Model (POM) Generation
+
+The gherkin command now generates complete test suites including:
+- **Feature file**: Gherkin scenarios with @smoke/@regression tags
+- **Step definitions**: Import and use generated POM classes
+- **POM classes**: Extend BasePage with locators, actions, and assertions
+- **Templates**: `templates/BasePage.ts` provides common page functionality
 
 ## Key Dependencies
 
