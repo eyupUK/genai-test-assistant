@@ -10,10 +10,13 @@ program.name("genai-test-assistant").description("GenAI helpers for QA").version
 
 program.command("gherkin")
   .requiredOption("--story <path>", "Path to user story/AC markdown")
-  .requiredOption("--out <dir>", "Output directory for feature & steps")
+  .requiredOption("--out <dir>", "Output directory for feature, steps & POM classes")
   .action(async (o) => {
     const res = await generateGherkin(o.story, o.out);
-    console.log("Gherkin generated:", Object.keys(res));
+    console.log("Generated files:", Object.keys(res));
+    console.log("✅ Feature file: generated.feature");
+    console.log("✅ Step definitions: steps.generated.ts"); 
+    console.log("✅ Page Object Model: pages.generated.ts");
   });
 
 program.command("data")
