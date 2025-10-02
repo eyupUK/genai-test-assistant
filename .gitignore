@@ -8,3 +8,4 @@ coverage
 .allure-results
 .env.example
 out
+reports
